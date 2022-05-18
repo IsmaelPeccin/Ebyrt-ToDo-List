@@ -1,4 +1,3 @@
-//Configuração do eslint baseada no projeto da TFC, da Trybe
 {
     "root": true,
     "env": {
