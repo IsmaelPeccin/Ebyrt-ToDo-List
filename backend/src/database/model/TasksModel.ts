@@ -44,10 +44,12 @@ Tasks.init({
   createdAt: {
     type: DATE,
     allowNull: false,
+    field: 'created_at',
   },
   updatedAt: {
     type: DATE,
     allowNull: false,
+    field: 'updated_at',
   },
 }, {
   underscored: true,
