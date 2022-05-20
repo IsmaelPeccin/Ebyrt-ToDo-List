@@ -1,6 +1,5 @@
 import { INTEGER, Model, STRING, DATE } from 'sequelize';
 import db from '.';
-import User from './UsersModel';
 
 class Tasks extends Model {
   public id!: number;
@@ -11,7 +10,7 @@ class Tasks extends Model {
 
   public status!: string;
 
-  public userId!: number;
+  // public userId!: number;
 
   public createdAt!: Date;
 
@@ -37,19 +36,14 @@ Tasks.init({
     type: STRING,
     allowNull: false,
   },
-  userId: {
-    type: INTEGER,
-    allowNull: false,
-  },
+
   createdAt: {
     type: DATE,
     allowNull: false,
-    field: 'created_at',
   },
   updatedAt: {
     type: DATE,
     allowNull: false,
-    field: 'updated_at',
   },
 }, {
   underscored: true,
@@ -57,7 +51,5 @@ Tasks.init({
   modelName: 'tasks',
   timestamps: true,
 });
-
-Tasks.belongsTo(User, { foreignKey: 'userId', as: 'user' });
 
 export default Tasks;
