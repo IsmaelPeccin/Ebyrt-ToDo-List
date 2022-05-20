@@ -35,4 +35,41 @@ export default class TasksController {
       next(error);
     }
   };
+
+  createTask = async (
+    req: Request,
+    res: Response,
+    next: NextFunction,
+  )
+  : Promise<void | Response> => {
+    try {
+      const { title, task, status } = req.body;
+      const newTask = await this.tasksService.createTask({
+        title,
+        task,
+        status,
+      });
+      return res.status(201).json(newTask);
+    } catch (error) {
+      next(error);
+    }
+  };
+
+  deleteTask = async (
+    req: Request,
+    res: Response,
+    next: NextFunction,
+  )
+  : Promise<void | Response> => {
+    try {
+      const { id } = req.params;
+      const task = await this.tasksService.deleteTask(+id);
+      if (!task) {
+        return res.status(404).json({ message: 'Task not found' });
+      }
+      return res.status(200).json({ message: 'Task deleted' });
+    } catch (error) {
+      next(error);
+    }
+  };
 }

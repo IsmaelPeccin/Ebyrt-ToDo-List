@@ -24,6 +24,8 @@ class App {
   private tasksRoutes(): void {
     this.app.get('/tasks', this._tasksController.getAllTasks);
     this.app.get('/tasks/:id', this._tasksController.getTaskById);
+    this.app.post('/tasks', this._tasksController.createTask);
+    this.app.delete('/tasks/:id', this._tasksController.deleteTask);
   }
 
   private startConfigs(): void {
